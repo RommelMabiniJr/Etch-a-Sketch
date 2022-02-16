@@ -1,0 +1,25 @@
+:root {
+    --grid-cols: 1;
+    --grid-rows: 1;
+}
+
+.grid-container{
+    display: grid;
+    grid-gap: 0.5em;
+    grid-template-columns: repeat(var(--grid-col), 1fr);
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+}
+
+
+.square-div {
+    background-color: #ffb3c1;
+    border: 2px solid rgb(25, 39, 39);
+    padding: 1em;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.square-div:hover {
+    background-color: #ff4d6d;
+}
