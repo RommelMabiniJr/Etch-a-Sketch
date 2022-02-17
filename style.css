@@ -1,6 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Kanit:ital,wght@0,100;1,100&family=Nunito:ital,wght@1,400;1,700&display=swap');
+
+* {
+    background-color: #073b4c;
+    color: #ffd166;
+}
 :root {
     --grid-cols: 1;
     --grid-rows: 1;
+}
+
+.container {
+    margin: 0 50px;
+}
+
+.header-container {
+    text-align: center;
+}
+
+.header-container h1{
+    
+    font-family: 'Nunito', sans-serif;
+    font-size: 80px;
+    margin: 20px 0;
+}
+
+.sub-head {
+    font-family: 'Amatic SC', cursive;
+    font-size: 35px;
+    font-weight: bold;
+    margin: 40px 0;
+}
+
+.content-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content {
+    font-family: 'Kanit', sans-serif;
+    font-size: 18px;
+    font-weight: bold;
+    width: 500px;
+}
+
+img {
+    height: 80px;
+    width: 80px;
+}
+
+.left-arrow {
+    transform: rotate(-145deg);
+}
+
+.right-arrow {
+    transform: scaleX(-1) rotate(-145deg);
+}
+
+.btn {
+    margin: 50px;
+    padding: 2em;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    border: 2px solid #118ab2;
+}
+
+.btn:hover {
+    background-color: #06d6a0;
+    color: #073b4c;
 }
 
 .grid-container{
@@ -13,7 +84,7 @@
 
 .square-div {
     background-color: white;
-    border: 2px solid #000000;
+    border: 2px solid #020e13;
     padding: 1em;
     text-align: center;
 }
