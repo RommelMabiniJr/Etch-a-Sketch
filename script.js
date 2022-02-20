@@ -1,58 +1,91 @@
 const gridContr = document.querySelector('.grid-container');
 
-let btn = document.querySelector('.btn');
+let gridBtn = document.querySelector('.btn');
+let mouseClicked = false;
 
 //default to 16x16 square grid first
 makeGrid(16, 16);
-let sqrBoxes = document.querySelectorAll('.square-div');
-sqrBoxes.forEach(box => {
-    box.addEventListener('mouseover', function(e) {
-        colorToAssign = createColor();
-        e.target.style.backgroundColor = colorToAssign;
+addSetOfEvents();
 
 
-        setTimeout(function() {
-            e.target.style.backgroundColor = "";
-            }, 500);
-    })
-})
 
-btn.addEventListener('click', () => {
+gridBtn.addEventListener('click', () => {
 
     resetGrid();
     
-    let sqrsPerSide = prompt('Enter the number of square to generate per sides')
+    let sqrsPerSide = prompt('Enter the number of square to generate per sides (Max is 100)');
     makeGrid(sqrsPerSide, sqrsPerSide);
 
+    addSetOfEvents();
+})
 
+
+
+
+
+
+
+
+function addSetOfEvents() {
     let sqrBoxes = document.querySelectorAll('.square-div');
     sqrBoxes.forEach(box => {
-        box.addEventListener('mouseover', function(e) {
+
+        //make grid boxes undraggable
+        box.addEventListener('dragstart', (e) => {
+            e.preventDefault();
+        })
+        //make grid boxes undraggable
+        box.addEventListener('drop', (e) => {
+            e.preventDefault
+        })
+
+        box.addEventListener('mousedown', function(e) {
+            mouseClicked = true;
+            
             colorToAssign = createColor();
             e.target.style.backgroundColor = colorToAssign;
     
+        });
     
-            setTimeout(function() {
-                e.target.style.backgroundColor = "";
-              }, 500);
-        })
+        box.addEventListener('mouseover', function(e) {
+            if(mouseClicked) {
+                colorToAssign = createColor();
+                e.target.style.backgroundColor = colorToAssign;
+            }
+        });
+    
+        box.addEventListener('mouseup', function (e) {
+            mouseClicked = false;
+        });
     })
-})
+}
 
 function resetGrid() {
+    //removing boxes within div rows
     let resetSqrBoxes = document.querySelectorAll('.square-div');
     resetSqrBoxes.forEach(box => {
         box.remove();
     })
+
+    //after removing boxes, remove div rows
+    let resetRowCon = document.querySelectorAll('.row-container')
+    resetRowCon.forEach(row => {
+        row.remove();
+    })
 }
 
-function makeGrid(rows, col) {
-    gridContr.style.setProperty('--grid-rows', rows);
-    gridContr.style.setProperty('--grid-col', col);
-    
-    for (let x = 0; x < (rows * col); x++) {
-        let boxItem = document.createElement('div')
-        gridContr.appendChild(boxItem).className = 'square-div'
+//Old: Making Grid using display: grid
+//Update: Making Grid using display: flex
+function makeGrid(col, rows) {
+    for (let x = 0; x < col; x++) {
+        let gridRow = document.createElement('div');
+
+        for (let y = 0; y < rows; y++) {
+            let boxItem = document.createElement('div');
+            gridRow.appendChild(boxItem).className = 'square-div';
+        }
+
+        gridContr.appendChild(gridRow).className = 'row-container';
     }
 }
 
