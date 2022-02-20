@@ -6,7 +6,7 @@
 }
 
 .container {
-    margin: 100px 300px;
+    margin: 100px 250px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -33,14 +33,15 @@
 .content-container {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .content {
     font-family: 'Kanit', sans-serif;
     font-size: 18px;
     font-weight: bold;
-    width: 500px;
+    width: 250px;
+    margin: 0 25px;
 }
 
 img {
@@ -57,7 +58,7 @@ img {
 }
 
 .btn {
-    margin: 50px;
+    margin: 39px;
     padding: 2em;
     font-family: 'Nunito', sans-serif;
     font-weight: bold;
