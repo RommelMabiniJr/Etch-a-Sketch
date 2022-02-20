@@ -1,6 +1,7 @@
 const gridContr = document.querySelector('.grid-container');
 
-let gridBtn = document.querySelector('.btn');
+let gridBtn = document.querySelector('.create-btn');
+let clearBtn = document.querySelector('.clear-btn');
 let mouseClicked = false;
 
 //default to 16x16 square grid first
@@ -14,9 +15,22 @@ gridBtn.addEventListener('click', () => {
     resetGrid();
     
     let sqrsPerSide = prompt('Enter the number of square to generate per sides (Max is 100)');
+
+    while (sqrsPerSide > 100) {
+        sqrsPerSide = prompt('Enter a number that is not higher than 100');
+    }
+
     makeGrid(sqrsPerSide, sqrsPerSide);
 
     addSetOfEvents();
+})
+
+clearBtn.addEventListener('click', () => {
+
+    let sqrBoxes = document.querySelectorAll('.square-div');
+    sqrBoxes.forEach(box => {
+        box.style.backgroundColor = "#ffffff";
+    })
 })
 
 
